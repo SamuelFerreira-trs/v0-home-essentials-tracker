@@ -60,23 +60,23 @@ export function ItemsTable({ items, onTogglePurchased, onEdit, onDelete }: Items
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="w-12">Done</TableHead>
-              <TableHead>Item Name</TableHead>
-              <TableHead>Room</TableHead>
-              <TableHead>Priority</TableHead>
+              <TableHead className="w-12">Feito</TableHead>
+              <TableHead>Nome do Item</TableHead>
+              <TableHead>Cômodo</TableHead>
+              <TableHead>Prioridade</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead className="text-right">Qty</TableHead>
-              <TableHead className="text-right">Est. Cost</TableHead>
-              <TableHead className="text-right">Actual Cost</TableHead>
-              <TableHead>Notes</TableHead>
-              <TableHead className="w-24">Actions</TableHead>
+              <TableHead className="text-right">Qtd</TableHead>
+              <TableHead className="text-right">Custo Est.</TableHead>
+              <TableHead className="text-right">Custo Real</TableHead>
+              <TableHead>Observações</TableHead>
+              <TableHead className="w-24">Ações</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {items.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={10} className="text-center py-8 text-muted-foreground">
-                  No items found. Add your first item to get started!
+                  Nenhum item encontrado. Adicione seu primeiro item para começar!
                 </TableCell>
               </TableRow>
             ) : (
@@ -105,9 +105,17 @@ export function ItemsTable({ items, onTogglePurchased, onEdit, onDelete }: Items
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right">{item.quantity}</TableCell>
-                  <TableCell className="text-right">${item.estimated_cost.toLocaleString()}</TableCell>
                   <TableCell className="text-right">
-                    {item.actual_cost ? `$${item.actual_cost.toLocaleString()}` : "-"}
+                    R${" "}
+                    {item.estimated_cost.toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {item.actual_cost
+                      ? `R$ ${item.actual_cost.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+                      : "-"}
                   </TableCell>
                   <TableCell className="max-w-xs truncate text-sm text-muted-foreground">{item.notes || "-"}</TableCell>
                   <TableCell>
@@ -130,13 +138,13 @@ export function ItemsTable({ items, onTogglePurchased, onEdit, onDelete }: Items
       <AlertDialog open={!!deleteId} onOpenChange={() => setDeleteId(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
             <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete this item from your list.
+              Esta ação não pode ser desfeita. Isso excluirá permanentemente este item da sua lista.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
             <AlertDialogAction
               onClick={() => {
                 if (deleteId) {
@@ -145,7 +153,7 @@ export function ItemsTable({ items, onTogglePurchased, onEdit, onDelete }: Items
                 }
               }}
             >
-              Delete
+              Excluir
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

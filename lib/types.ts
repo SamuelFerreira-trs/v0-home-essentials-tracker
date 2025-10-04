@@ -23,6 +23,7 @@ export interface HomeItem {
   actual_cost: number | null
   quantity: number
   notes: string
+  user_id: string | null
   created_at: string
   updated_at: string
 }
@@ -34,4 +35,55 @@ export interface CategoryStats {
   notPurchased: number
   totalEstimatedCost: number
   totalActualCost: number
+}
+
+export interface Database {
+  public: {
+    Tables: {
+      enxoval_items: {
+        Row: {
+          id: string
+          item_name: string
+          room_category: RoomCategory
+          purchase_status: PurchaseStatus
+          priority: Priority
+          estimated_cost: number
+          actual_cost: number | null
+          quantity: number
+          notes: string
+          user_id: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          item_name: string
+          room_category: RoomCategory
+          purchase_status?: PurchaseStatus
+          priority?: Priority
+          estimated_cost?: number
+          actual_cost?: number | null
+          quantity?: number
+          notes?: string
+          user_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          item_name?: string
+          room_category?: RoomCategory
+          purchase_status?: PurchaseStatus
+          priority?: Priority
+          estimated_cost?: number
+          actual_cost?: number | null
+          quantity?: number
+          notes?: string
+          user_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+    }
+  }
 }

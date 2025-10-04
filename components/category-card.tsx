@@ -32,8 +32,8 @@ export function CategoryCard({ stats, color, onClick }: CategoryCardProps) {
 
       <div className="space-y-2">
         <div className="flex items-center justify-between text-sm">
-          <span className="text-gray-700 font-medium">{stats.total} Items</span>
-          <span className="text-gray-700">{stats.purchased} Completed</span>
+          <span className="text-gray-700 font-medium">{stats.total} Itens</span>
+          <span className="text-gray-700">{stats.purchased} Concluídos</span>
         </div>
 
         <div className="w-full bg-white/40 rounded-full h-2">
@@ -42,11 +42,13 @@ export function CategoryCard({ stats, color, onClick }: CategoryCardProps) {
 
         <div className="pt-2 border-t border-gray-900/20">
           <div className="text-xs text-gray-700">
-            <span className="font-semibold">Budget:</span> ${stats.totalEstimatedCost.toLocaleString()}
+            <span className="font-semibold">Orçamento:</span> R${" "}
+            {stats.totalEstimatedCost.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
           {stats.totalActualCost > 0 && (
             <div className="text-xs text-gray-700">
-              <span className="font-semibold">Spent:</span> ${stats.totalActualCost.toLocaleString()}
+              <span className="font-semibold">Gasto:</span> R${" "}
+              {stats.totalActualCost.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
             </div>
           )}
         </div>

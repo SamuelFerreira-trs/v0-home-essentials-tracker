@@ -61,13 +61,13 @@ export function ItemDialog({ open, onOpenChange, item, onSave }: ItemDialogProps
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>{item ? "Edit Item" : "Add New Item"}</DialogTitle>
+          <DialogTitle>{item ? "Editar Item" : "Adicionar Novo Item"}</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
-              <Label htmlFor="item_name">Item Name *</Label>
+              <Label htmlFor="item_name">Nome do Item *</Label>
               <Input
                 id="item_name"
                 value={formData.item_name}
@@ -77,7 +77,7 @@ export function ItemDialog({ open, onOpenChange, item, onSave }: ItemDialogProps
             </div>
 
             <div>
-              <Label htmlFor="room_category">Room Category *</Label>
+              <Label htmlFor="room_category">Categoria do Cômodo *</Label>
               <Select
                 value={formData.room_category}
                 onValueChange={(value) => setFormData({ ...formData, room_category: value as RoomCategory })}
@@ -96,7 +96,7 @@ export function ItemDialog({ open, onOpenChange, item, onSave }: ItemDialogProps
             </div>
 
             <div>
-              <Label htmlFor="purchase_status">Purchase Status *</Label>
+              <Label htmlFor="purchase_status">Status da Compra *</Label>
               <Select
                 value={formData.purchase_status}
                 onValueChange={(value) => setFormData({ ...formData, purchase_status: value as PurchaseStatus })}
@@ -115,7 +115,7 @@ export function ItemDialog({ open, onOpenChange, item, onSave }: ItemDialogProps
             </div>
 
             <div>
-              <Label htmlFor="priority">Priority *</Label>
+              <Label htmlFor="priority">Prioridade *</Label>
               <Select
                 value={formData.priority}
                 onValueChange={(value) => setFormData({ ...formData, priority: value as Priority })}
@@ -134,7 +134,7 @@ export function ItemDialog({ open, onOpenChange, item, onSave }: ItemDialogProps
             </div>
 
             <div>
-              <Label htmlFor="quantity">Quantity *</Label>
+              <Label htmlFor="quantity">Quantidade *</Label>
               <Input
                 id="quantity"
                 type="number"
@@ -146,7 +146,7 @@ export function ItemDialog({ open, onOpenChange, item, onSave }: ItemDialogProps
             </div>
 
             <div>
-              <Label htmlFor="estimated_cost">Estimated Cost ($) *</Label>
+              <Label htmlFor="estimated_cost">Custo Estimado (R$) *</Label>
               <Input
                 id="estimated_cost"
                 type="number"
@@ -159,7 +159,7 @@ export function ItemDialog({ open, onOpenChange, item, onSave }: ItemDialogProps
             </div>
 
             <div>
-              <Label htmlFor="actual_cost">Actual Cost ($)</Label>
+              <Label htmlFor="actual_cost">Custo Real (R$)</Label>
               <Input
                 id="actual_cost"
                 type="number"
@@ -169,12 +169,12 @@ export function ItemDialog({ open, onOpenChange, item, onSave }: ItemDialogProps
                 onChange={(e) =>
                   setFormData({ ...formData, actual_cost: e.target.value ? Number.parseFloat(e.target.value) : null })
                 }
-                placeholder="Leave empty if not purchased"
+                placeholder="Deixe vazio se não comprado"
               />
             </div>
 
             <div className="col-span-2">
-              <Label htmlFor="notes">Notes</Label>
+              <Label htmlFor="notes">Observações</Label>
               <Textarea
                 id="notes"
                 value={formData.notes}
@@ -186,9 +186,9 @@ export function ItemDialog({ open, onOpenChange, item, onSave }: ItemDialogProps
 
           <DialogFooter>
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
-              Cancel
+              Cancelar
             </Button>
-            <Button type="submit">{item ? "Update Item" : "Add Item"}</Button>
+            <Button type="submit">{item ? "Atualizar Item" : "Adicionar Item"}</Button>
           </DialogFooter>
         </form>
       </DialogContent>
